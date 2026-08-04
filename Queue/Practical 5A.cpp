@@ -3,7 +3,7 @@ using namespace std;
 
 #define s 20
 int queue[s];
-int front=-1,rear=-1;
+int front=-1,rear=-1;                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 
 int full()
 {
