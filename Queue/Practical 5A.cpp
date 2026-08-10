@@ -92,20 +92,12 @@ int main()
  switch(h)
  {
     case 1:
-         int n;
-
-    cout << "How Many Elements Do You Want To Insert: ";
-    cin >> n;
-
-    for(int i = 0; i < n; i++)
-    {
-        cout << "Enter Element " << i + 1 << ": ";
+        cout << "Enter Element: ";
         cin >> x;
-
         enqueue(x);
-    }
+    break;
 
-        break;
+    
 
     case 2:
         x=dequeue();
