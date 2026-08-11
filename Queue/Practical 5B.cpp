@@ -1,13 +1,13 @@
 #include<iostream>
 using namespace std;
 
-#define s 20
+#define s 5
 int queue[s];
 int front=-1,rear=-1;   
 
 int full()
 {
-    if (front == -1)
+    if ((rear+1)%s==front)
     {
         return 1;
     }
@@ -34,17 +34,16 @@ void enqueue(int x)
     if(full())
     {
         cout<<"Queue is full"<<endl;
-        return 0;
-    }
+        return ;
     }
     else 
     {
         if(front==-1)
         {
-            front=0;
-            rear=(rear+1)%s;
-            queue[rear]=x;
-        }
+            front=0;           
+        } 
+        rear=(rear+1)%s;
+        queue[rear]=x;
     }
 }
 
@@ -67,6 +66,7 @@ int dequeue()
         {
             front=(front+1)%s;
         }
+        return x;
     }
 }
 
@@ -76,7 +76,7 @@ void display()
     if(empty())
     {
         cout<<"Queue is empty"<<endl;
-        return 0;
+        return ;
     }
     else
     {
@@ -93,7 +93,8 @@ int main()
     int n,x;
     while(1)
     {
-        cout<<"1.Enqueue/n2.Dequeue/n3.Display/n4.Exit"<<endl;
+        cout<<"1.Enqueue 2.Dequeue 3.Display 4.Exit"<<endl;
+        cout<<"Enter your choice";
         cin>>n;
         switch(n)
         {
@@ -113,7 +114,7 @@ int main()
                 display();
                 break;
             case 4:
-                exit(0);
+                return 0;
             default:
                 cout<<"Invalid choice"<<endl;
         }
