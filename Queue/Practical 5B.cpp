@@ -75,7 +75,7 @@ void display()
     int i;
     if(empty())
     {
-        cout<<"Queue is empty"<<endl;
+        cout<<"Queue is empty:"<<endl;
         return ;
     }
     else
