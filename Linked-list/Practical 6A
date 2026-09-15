@@ -1,0 +1,109 @@
+#include<iostream>
+#include<cstdlib>
+
+using namespace std;
+struct node{
+    int info;
+    struct node *next;
+};
+
+struct node *first=NULL;
+struct node *create_node(int x)
+{
+    struct node *temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    temp->info=x;
+    temp->next=NULL;
+    return temp;
+}
+void insert_first(int x)
+{
+    struct node *t;
+    t=create_node(x);
+    if(first==NULL)
+    first=t;
+    else
+    {
+        t->next=first;
+        first=t;
+    }
+}
+void insert_last(int x)
+{
+    struct node *t,*p;
+    t=create_node(x);
+    if(first==NULL)
+    first=t;
+    else
+    {
+        p=first;
+        while(p->next!=NULL)
+        p=p->next;
+        p->next=t;
+    }
+}
+void insert(int pos,int x)
+{
+    struct node *t,*y;
+    int c=1;
+    t=create_node(x);
+    if(first==NULL)
+    first=t;
+    else
+    {
+        y=first;
+        while(c!=pos-1)
+        {
+            y=y->next;
+            pos--;
+        }
+        y=y->next;
+        t->next=y->next;
+        y->next=t;
+    }
+}
+void display()
+{
+    struct node *t;
+    t=first;
+    while(t!=NULL)
+    {
+        cout<<t->info<<" ";
+        t=t->next;
+    }
+}
+int main()
+{
+    int ch,x,pos;
+    while(1)
+    {
+        cout<<"\n1.Insert at first\n2.Insert at last\n3.Insert at position\n4.Display\n5.Exit";
+        cout<<"\nEnter your choice:";
+        cin>>ch;
+        switch(ch)
+        {
+            case 1:
+                cout<<"Enter the element to be inserted:"<<endl;
+                cin>>x;
+                insert_first(x);
+                break;
+            case 2:
+                cout<<"Enter the element to be inserted:"<<endl;
+                cin>>x;
+                insert_last(x);
+                break;
+            case 3:
+                cout<<"Enter the position and element to be inserted:"<<endl;
+                cin>>pos>>x;
+                insert(pos,x);
+                break;
+            case 4:
+                display();
+                break;
+            case 5:
+                cout<<"Program is ended"<<endl;
+        }
+    }
+    return 0;
+
+}
