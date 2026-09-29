@@ -107,7 +107,7 @@ int main()
    inorder(root);
    cout<<endl;
 
-   cout<<"Menue based code to called tree into inorder,preorder and postorder"<<endl;
+   cout<<"Menu based code to call tree traversals"<<endl;
    while(1)
    {
     cout<<"1.Inorder"<<endl;
